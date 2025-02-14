@@ -1,0 +1,50 @@
+[
+  {
+    "ProductName": "Wireless Earbuds",
+    "Category": "Electronics",
+    "StoreID": "S001",
+    "Description": "High-quality wireless earbuds with noise cancellation.",
+    "Price": 59.99,
+    "Content": ["Charging Case", "USB-C Cable", "Extra Ear Tips", "User Manual"]
+  },
+  {
+    "ProductName": "Wireless Earbuds2",
+    "Category": "Electronics",
+    "StoreID": "S001",
+    "Description": "High-quality wireless earbuds with noise cancellation.",
+    "Price": 59.99,
+    "Content": ["Charging Case", "USB-C Cable", "Extra Ear Tips", "User Manual"]
+  },
+  {
+    "ProductName": "Leather Wallet",
+    "Category": "Accessories",
+    "StoreID": "S002",
+    "Description": "Genuine leather wallet with multiple card slots.",
+    "Price": 29.99,
+    "Content": ["Wallet", "Gift Box", "Warranty Card"]
+  },
+  {
+    "ProductName": "Gaming Mouse",
+    "Category": "Computer Accessories",
+    "StoreID": "S003",
+    "Description": "Ergonomic gaming mouse with RGB lighting and adjustable DPI.",
+    "Price": 39.99,
+    "Content": ["Gaming Mouse", "USB Cable", "User Manual"]
+  },
+  {
+    "ProductName": "Smartwatch",
+    "Category": "Wearables",
+    "StoreID": "S004",
+    "Description": "Feature-rich smartwatch with heart rate monitoring and GPS.",
+    "Price": 79.99,
+    "Content": ["Smartwatch", "Charging Cable", "Extra Strap", "User Guide"]
+  },
+  {
+    "ProductName": "Bluetooth Speaker",
+    "Category": "Audio",
+    "StoreID": "S005",
+    "Description": "Portable Bluetooth speaker with deep bass and waterproof design.",
+    "Price": 49.99,
+    "Content": ["Speaker", "USB Cable", "Aux Cable", "User Manual"]
+  }
+]
