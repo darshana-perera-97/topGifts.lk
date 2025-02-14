@@ -1,0 +1,22 @@
+[
+  {
+    "storeId": 1,
+    "storename": "TopGifts",
+    "contactnumber": "+94 771234567",
+    "categories": ["Gifts", "Accessories", "Handmade Items"],
+    "email": "darshana.saluka.pc@gmail.com",
+    "password": "123",
+    "description": "TopGifts is your one-stop shop for unique and personalized gifts in Sri Lanka.",
+    "products": [101, 102, 103]
+  },
+  {
+    "storeId": 2,
+    "storename": "TopGifts",
+    "contactnumber": "+94 771234567",
+    "categories": ["Gifts", "Accessories", "Handmade Items"],
+    "email": "darshana.saluka.pc@gmail.com",
+    "password": "1",
+    "description": "TopGifts is your one-stop shop for unique and personalized gifts in Sri Lanka.",
+    "products": [101, 102, 103]
+  }
+]
