@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate(); // To navigate after login
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,40 +23,54 @@ export default function Login() {
     if (response.ok) {
       setMessage(data.message);
       setSuccess(data.success);
-      localStorage.setItem("token", data.token); // Store token if needed
-      localStorage.setItem("storeId", data.storeId); // Store storeId in local storage
-      console.log("Store ID saved:", data.storeId); // You can remove this line after testing
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("storeId", data.storeId);
+
+      console.log("Store ID saved:", data.storeId);
+
+      // Wait for localStorage update, then navigate
+      setTimeout(() => {
+        navigate("/admin");
+        window.location.reload(); // Ensures correct re-render
+      }, 500);
     } else {
       setMessage(data.message);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="container mt-5">
+      {!success && (
+        <div className="card shadow p-4 mx-auto" style={{ maxWidth: "400px" }}>
+          <h2 className="text-center mb-4">Login</h2>
+          <form onSubmit={handleLogin}>
+            <div className="mb-3">
+              <label className="form-label">Email:</label>
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password:</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100">
+              Login
+            </button>
+          </form>
+          {message && <p className="mt-3 text-center text-danger">{message}</p>}
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {message && <p>{message}</p>}
-      {success && <Link to="/admin">Home</Link>}
+      )}
     </div>
   );
 }

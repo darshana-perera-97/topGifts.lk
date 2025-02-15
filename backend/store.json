@@ -10,6 +10,16 @@
     "products": [101, 102, 103]
   },
   {
+    "storeId": 1,
+    "storename": "TopGifts",
+    "contactnumber": "+94 771234567",
+    "categories": ["Gifts", "Accessories", "Handmade Items"],
+    "email": "a@g.com",
+    "password": "a",
+    "description": "TopGifts is your one-stop shop for unique and personalized gifts in Sri Lanka.",
+    "products": [101, 102, 103]
+  },
+  {
     "storeId": 2,
     "storename": "TopGifts",
     "contactnumber": "+94 771234567",
