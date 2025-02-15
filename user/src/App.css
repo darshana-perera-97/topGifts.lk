@@ -24,7 +24,7 @@ input:focus {
 .search-box button:active,
 .search-box button:hover {
   border-radius: 0px 10px 10px 0px;
-  background: #574285
+  background: #402970
 }
 
 .search-box {
@@ -35,8 +35,8 @@ input:focus {
 .btn-primary,
 .btn-primary:active,
 .btn-primary:hover {
-  background: #574285;
-  border: 1px solid #574285;
+  background: #402970;
+  border: 1px solid #402970;
 }
 
 
@@ -84,5 +84,11 @@ input:focus {
 }
 
 .cta-button:hover {
-  background-color: #d63b3b;
+  background-color: rgb(185, 37, 37);
+}
+
+.category-scroll-container {
+  background: #402970;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
