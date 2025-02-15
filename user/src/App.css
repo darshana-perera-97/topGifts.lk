@@ -37,6 +37,8 @@ input:focus {
 .btn-primary:hover {
   background: #402970;
   border: 1px solid #402970;
+  text-decoration: none;
+  color: #fff;
 }
 
 
@@ -91,4 +93,30 @@ input:focus {
   background: #402970;
   padding-top: 10px;
   padding-bottom: 5px;
+}
+
+.admin-card-view .product-name {
+  color: #402970;
+  font-size: 25px;
+}
+
+.admin-card-view .product-catogery p {
+  background: #40297050;
+  font-size: 15px;
+  color: #402970;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 25px;
+  margin-top: 15px;
+}
+
+/* Remove borders from cards */
+.no-border {
+  border: none;
+}
+
+/* Ensure the image inside the card spans full width */
+.card img {
+  width: 100%;
+  height: auto;
 }

@@ -1,50 +1,26 @@
 [
-  {
-    "ProductName": "Wireless Earbuds",
-    "Category": "Electronics",
-    "StoreID": "S001",
-    "Description": "High-quality wireless earbuds with noise cancellation.",
-    "Price": 59.99,
-    "Content": ["Charging Case", "USB-C Cable", "Extra Ear Tips", "User Manual"]
-  },
-  {
-    "ProductName": "Wireless Earbuds2",
-    "Category": "Electronics",
-    "StoreID": "S001",
-    "Description": "High-quality wireless earbuds with noise cancellation.",
-    "Price": 59.99,
-    "Content": ["Charging Case", "USB-C Cable", "Extra Ear Tips", "User Manual"]
-  },
-  {
-    "ProductName": "Leather Wallet",
-    "Category": "Accessories",
-    "StoreID": "S002",
-    "Description": "Genuine leather wallet with multiple card slots.",
-    "Price": 29.99,
-    "Content": ["Wallet", "Gift Box", "Warranty Card"]
-  },
-  {
-    "ProductName": "Gaming Mouse",
-    "Category": "Computer Accessories",
-    "StoreID": "S003",
-    "Description": "Ergonomic gaming mouse with RGB lighting and adjustable DPI.",
-    "Price": 39.99,
-    "Content": ["Gaming Mouse", "USB Cable", "User Manual"]
-  },
-  {
-    "ProductName": "Smartwatch",
-    "Category": "Wearables",
-    "StoreID": "S004",
-    "Description": "Feature-rich smartwatch with heart rate monitoring and GPS.",
-    "Price": 79.99,
-    "Content": ["Smartwatch", "Charging Cable", "Extra Strap", "User Guide"]
-  },
-  {
-    "ProductName": "Bluetooth Speaker",
-    "Category": "Audio",
-    "StoreID": "S005",
-    "Description": "Portable Bluetooth speaker with deep bass and waterproof design.",
-    "Price": 49.99,
-    "Content": ["Speaker", "USB Cable", "Aux Cable", "User Manual"]
-  }
+    {
+        "ProductName": "test2",
+        "Category": "Electronics",
+        "StoreID": "1",
+        "Description": "fgdh",
+        "Price": "130",
+        "Content": "trdt,type",
+        "mainImage": "1739636274358-Frame (1).png",
+        "productImages": [
+            "1739636274359-png-clipart-cupcakes-on-tray-cupcake-wedding-cake-milk-creative-cakes-cream-baking.png"
+        ]
+    },
+    {
+        "ProductName": "test5",
+        "Category": "Books",
+        "StoreID": "1",
+        "Description": "terdcx",
+        "Price": "123",
+        "Content": "trdt,type",
+        "mainImage": "1739637415765-post (7).jpg",
+        "productImages": [
+            "1739637415773-post (6).jpg"
+        ]
+    }
 ]

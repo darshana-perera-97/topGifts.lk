@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/products
+/store.json
+/products.json
 
 # production
 /build

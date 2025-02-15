@@ -9,6 +9,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Admin from "./Pages/Admin";
 import Navbar from "./Components/Navbar";
+import AddProduct from "./Pages/AddProduct";
 
 export default function Design() {
   const [storeId, setStoreId] = useState(localStorage.getItem("storeId"));
@@ -35,6 +36,10 @@ export default function Design() {
           <Route
             path="/admin"
             element={storeId ? <Admin /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/addProduct"
+            element={storeId ? <AddProduct /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>

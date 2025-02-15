@@ -1,38 +1,29 @@
-.App {
+.admin-card-view .product-name {
+  color: #402970;
+  font-size: 25px;
+}
+
+.admin-card-view .product-catogery p {
+  background: #40297050;
+  font-size: 15px;
+  color: #402970;
   text-align: center;
+  padding: 5px 5px;
+  border-radius: 25px;
+  margin-top: 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.popup-header {
+  color: #fff;
+  background: #402970;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.popup-header .btn-close {
+  background: #fff;
+  color: #402970;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.close-btn {
+  color: #fff !important;
+  background: #402970;
 }
