@@ -1,6 +1,7 @@
 [
     {
         "ProductName": "test2",
+        "productId": "1",
         "Category": "Electronics",
         "StoreID": "1",
         "Description": "fgdh",
@@ -13,6 +14,7 @@
     },
     {
         "ProductName": "test5",
+        "productId": "2",
         "Category": "Books",
         "StoreID": "1",
         "Description": "terdcx",

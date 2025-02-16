@@ -235,6 +235,7 @@ app.delete("/delete-product/:id", (req, res) => {
   });
 });
 
+
 // API to update store.json
 app.post("/update-store", (req, res) => {
   const newStoreData = req.body;
