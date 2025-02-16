@@ -7,6 +7,7 @@ import Product from "./Pages/Product";
 import ProductDetail from "./Pages/ProductDetail";
 import Categories from "./Pages/Categories"; // Page to list categories
 import CategoryDetail from "./Pages/CategoryDetail"; // Page for individual category
+import OrderFormPage from "./Pages/OrderFormPage";
 
 export default function Design() {
   return (
@@ -16,6 +17,7 @@ export default function Design() {
         <Route path="/store" element={<Store />} />
         <Route path="/store/:storeId" element={<StoreDetail />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/order" element={<OrderFormPage />} />
         <Route path="/product/:productName" element={<ProductDetail />} />
         <Route path="/categories" element={<Categories />} />{" "}
         {/* List of categories */}

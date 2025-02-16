@@ -42,6 +42,16 @@ input:focus {
 }
 
 
+.btn-primary2,
+.btn-primary2:active,
+.btn-primary2:hover {
+  background: #ffffff;
+  border: 1px solid #402970;
+  text-decoration: none;
+  color: #402970;
+}
+
+
 
 
 /* hero section */
@@ -119,4 +129,35 @@ input:focus {
 .card img {
   width: 100%;
   height: auto;
+}
+
+
+.single-product-page .ProductName {
+  color: #402970;
+  font-weight: 700;
+  font-size: 55px;
+}
+
+.single-product-page .Productcatogery {
+  color: #402970;
+  font-weight: 200;
+  font-size: 25px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.single-product-page .store {
+  color: #402970;
+  font-weight: 200;
+  font-size: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.single-product-page strong {
+  color: #402970;
+  font-weight: 400;
+  font-size: 25px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }

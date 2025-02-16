@@ -3,7 +3,9 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
-const multer = require("multer"); // Import multer for handling file uploads
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+require("dotenv").config(); // Load environment variables
 
 const app = express();
 const PORT = 5002;
@@ -40,6 +42,57 @@ const upload = multer({
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+
+// Load environment variables from `.env`
+const { EMAIL_SERVICE, EMAIL_USER, EMAIL_PASS, ADMIN_EMAIL } = process.env;
+
+// **Configure Nodemailer Transporter**
+const transporter = nodemailer.createTransport({
+  service: EMAIL_SERVICE, // Example: "gmail"
+  auth: {
+    user: EMAIL_USER, // Your email
+    pass: EMAIL_PASS, // Your email password or App Password (for Gmail)
+  },
+});
+
+// **API Endpoint to Receive Order and Send Email**
+app.post("/place-order", (req, res) => {
+  const { name, email, phone, address, productName, productPrice } = req.body;
+
+  if (!name || !email || !phone || !address || !productName || !productPrice) {
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required!" });
+  }
+
+  // **Email Content**
+  const mailOptions = {
+    from: EMAIL_USER,
+    to: ADMIN_EMAIL, // Admin's email where orders should be sent
+    subject: `New Order Received - ${productName}`,
+    html: `
+      <h2>New Order Received</h2>
+      <p><strong>Product:</strong> ${productName}</p>
+      <p><strong>Price:</strong> Rs.${productPrice}.00</p>
+      <h3>Customer Details:</h3>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Address:</strong> ${address}</p>
+    `,
+  };
+
+  // **Send Email**
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      return res
+        .status(500)
+        .json({ success: false, message: "Failed to send email!" });
+    }
+    res.json({ success: true, message: "Order placed successfully!" });
+  });
+});
 
 // Read existing products from products.json
 const getProducts = () => {
@@ -144,9 +197,7 @@ app.get("/products", (req, res) => {
   const products = getProducts();
   const updatedProducts = products.map((product) => {
     console.log(`Main Image Path: /${product.mainImage}`);
-    console.log(
-      `Product Images: /${product.productImages.join(", /")}`
-    );
+    console.log(`Product Images: /${product.productImages.join(", /")}`);
 
     return {
       ...product,
