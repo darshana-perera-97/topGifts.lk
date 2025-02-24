@@ -1,28 +1,3 @@
 [
-    {
-        "ProductName": "test2",
-        "productId": "1",
-        "Category": "Electronics",
-        "StoreID": "1",
-        "Description": "fgdh",
-        "Price": "130",
-        "Content": "trdt,type",
-        "mainImage": "1739636274358-Frame (1).png",
-        "productImages": [
-            "1739636274359-png-clipart-cupcakes-on-tray-cupcake-wedding-cake-milk-creative-cakes-cream-baking.png"
-        ]
-    },
-    {
-        "ProductName": "test5",
-        "productId": "2",
-        "Category": "Books",
-        "StoreID": "1",
-        "Description": "terdcx",
-        "Price": "123",
-        "Content": "trdt,type",
-        "mainImage": "1739637415765-post (7).jpg",
-        "productImages": [
-            "1739637415773-post (6).jpg"
-        ]
-    }
+    
 ]

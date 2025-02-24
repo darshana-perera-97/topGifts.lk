@@ -189,6 +189,60 @@ app.post("/add-product", upload, (req, res) => {
   });
 });
 
+// API to add a new store
+app.post("/add-store", (req, res) => {
+  const newStore = req.body;
+  let stores = getStoreData();
+
+  if (!newStore || !newStore.storeId || !newStore.email) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid store data" });
+  }
+
+  const storeExists = stores.some(
+    (store) => store.storeId === newStore.storeId
+  );
+
+  if (storeExists) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Store ID already exists!" });
+  }
+
+  stores.push(newStore);
+  saveStore(stores);
+
+  res.json({
+    success: true,
+    message: "Store added successfully",
+    data: newStore,
+  });
+});
+
+// API to edit an existing store
+app.put("/edit-store/:storeId", (req, res) => {
+  const storeId = parseInt(req.params.storeId);
+  const updatedStore = req.body;
+  let stores = getStoreData();
+
+  const storeIndex = stores.findIndex((store) => store.storeId === storeId);
+
+  if (storeIndex === -1) {
+    return res.status(404).json({ success: false, message: "Store not found" });
+  }
+
+  // Update store details
+  stores[storeIndex] = { ...stores[storeIndex], ...updatedStore };
+  saveStore(stores);
+
+  res.json({
+    success: true,
+    message: "Store updated successfully",
+    data: stores[storeIndex],
+  });
+});
+
 // Serve static images from the 'products' folder
 app.use("/images", express.static(path.join(__dirname, "products")));
 
@@ -234,7 +288,6 @@ app.delete("/delete-product/:id", (req, res) => {
     data: filteredProducts,
   });
 });
-
 
 // API to update store.json
 app.post("/update-store", (req, res) => {
@@ -284,6 +337,68 @@ app.post("/add-store", (req, res) => {
 // API to get store.json data
 app.get("/store", (req, res) => {
   res.json({ success: true, data: getStore() });
+});
+
+const STORES_FILE = "store.json"; // Your local JSON file storing store data
+
+app.post("/update-store/:storeId", (req, res) => {
+  const { storeId } = req.params;
+  const { contactnumber, password, description } = req.body;
+
+  fs.readFile(STORES_FILE, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading stores:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Error reading stores." });
+    }
+
+    let stores;
+    try {
+      stores = JSON.parse(data);
+    } catch (parseErr) {
+      console.error("JSON Parse Error:", parseErr);
+      return res
+        .status(500)
+        .json({ success: false, message: "Invalid stores file format." });
+    }
+
+    // ✅ Ensure storeId is always treated as a string
+    const storeIndex = stores.findIndex(
+      (s) => String(s.storeId) === String(storeId)
+    );
+
+    if (storeIndex === -1) {
+      console.error("Store not found:", storeId);
+      return res
+        .status(404)
+        .json({ success: false, message: "Store not found." });
+    }
+
+    // ✅ Update only allowed fields
+    stores[storeIndex].contactnumber =
+      contactnumber || stores[storeIndex].contactnumber;
+    stores[storeIndex].password = password || stores[storeIndex].password;
+    stores[storeIndex].description =
+      description || stores[storeIndex].description;
+
+    // ✅ Write updated data to stores.json
+    fs.writeFile(STORES_FILE, JSON.stringify(stores, null, 2), (err) => {
+      if (err) {
+        console.error("Error saving store update:", err);
+        return res
+          .status(500)
+          .json({ success: false, message: "Error saving store update." });
+      }
+
+      console.log("Store updated successfully:", stores[storeIndex]);
+      res.json({
+        success: true,
+        message: "Store updated successfully.",
+        data: stores[storeIndex],
+      });
+    });
+  });
 });
 
 // Start Server
