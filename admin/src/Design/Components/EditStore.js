@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "bootstrap/js/dist/modal"; // ✅ Import Bootstrap Modal
-
 const StoreManager = () => {
   const [stores, setStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
@@ -12,7 +12,8 @@ const StoreManager = () => {
     description: "",
   });
 
-  // ✅ Fetch all stores from the backend
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:5002/store")
       .then((res) => res.json())
@@ -25,7 +26,6 @@ const StoreManager = () => {
       .catch(() => setLoading(false));
   }, []);
 
-  // ✅ Handle store selection for editing
   const handleEditStore = (store) => {
     setSelectedStore(store);
     setFormData({
@@ -34,18 +34,15 @@ const StoreManager = () => {
       description: store.description || "",
     });
 
-    // ✅ Initialize and show Bootstrap modal
     const modalElement = document.getElementById("editStoreModal");
     const modalInstance = new Modal(modalElement);
     modalInstance.show();
   };
 
-  // ✅ Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Handle store update
   const handleUpdateStore = () => {
     if (!selectedStore) return;
 
@@ -72,7 +69,6 @@ const StoreManager = () => {
           setSelectedStore(null);
           window.alert("Store updated successfully!");
 
-          // ✅ Close modal after updating
           const modalElement = document.getElementById("editStoreModal");
           const modalInstance = Modal.getInstance(modalElement);
           modalInstance.hide();
@@ -87,63 +83,60 @@ const StoreManager = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-3">Available Stores</h2>
+    <div className="store-container">
+      <div className="store-card">
+        <h2 className="mb-3 text-center">Available Stores</h2>
 
-      {/* ✅ Show Loading Indicator */}
-      {loading ? (
-        <div className="text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
+        {loading ? (
+          <div className="text-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="mt-2">Fetching stores...</p>
           </div>
-          <p className="mt-2">Fetching stores...</p>
-        </div>
-      ) : stores.length === 0 ? (
-        <p>No stores available. Please add a new store.</p>
-      ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Store Name</th>
-              <th>Contact</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stores.map((store) => (
-              <tr key={store.storeId}>
-                <td>{store.storename}</td>
-                <td>{store.contactnumber}</td>
-                <td>{store.email}</td>
-                <td>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => handleEditStore(store)}
-                  >
-                    Edit
-                  </button>
-                </td>
+        ) : stores.length === 0 ? (
+          <p>No stores available. Please add a new store.</p>
+        ) : (
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>Store Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {stores.map((store) => (
+                <tr key={store.storeId}>
+                  <td>{store.storename}</td>
+                  <td>{store.contactnumber}</td>
+                  <td>{store.email}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary btn-sm edit-btn"
+                      onClick={() => handleEditStore(store)}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <button className="custom-btn">
+          <Link to="/add">Add a Store</Link>
+        </button>
+      </div>
+      <div></div>
 
       {/* ✅ Bootstrap Modal for Editing Store */}
-      <div
-        className="modal fade"
-        id="editStoreModal"
-        tabIndex="-1"
-        aria-labelledby="editStoreModalLabel"
-        aria-hidden="true"
-      >
+      <div className="modal fade" id="editStoreModal" tabIndex="-1">
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content shadow">
             <div className="modal-header">
-              <h5 className="modal-title" id="editStoreModalLabel">
-                Edit Store
-              </h5>
+              <h5 className="modal-title">Edit Store</h5>
               <button
                 type="button"
                 className="btn-close"
@@ -151,7 +144,6 @@ const StoreManager = () => {
                 aria-label="Close"
               ></button>
             </div>
-
             <div className="modal-body">
               {selectedStore && (
                 <>
@@ -159,24 +151,22 @@ const StoreManager = () => {
                     <label className="form-label">Contact Number:</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control rounded-pill"
                       name="contactnumber"
                       value={formData.contactnumber}
                       onChange={handleChange}
                     />
                   </div>
-
                   <div className="mb-3">
                     <label className="form-label">Password:</label>
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control rounded-pill"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
                     />
                   </div>
-
                   <div className="mb-3">
                     <label className="form-label">Description:</label>
                     <textarea
@@ -190,7 +180,6 @@ const StoreManager = () => {
                 </>
               )}
             </div>
-
             <div className="modal-footer">
               <button
                 type="button"
@@ -199,7 +188,10 @@ const StoreManager = () => {
               >
                 Cancel
               </button>
-              <button className="btn btn-success" onClick={handleUpdateStore}>
+              <button
+                className="btn btn-success update-btn"
+                onClick={handleUpdateStore}
+              >
                 Save Changes
               </button>
             </div>

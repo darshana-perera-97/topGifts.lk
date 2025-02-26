@@ -189,25 +189,41 @@ app.post("/add-product", upload, (req, res) => {
   });
 });
 
-// API to add a new store
 app.post("/add-store", (req, res) => {
-  const newStore = req.body;
   let stores = getStoreData();
 
-  if (!newStore || !newStore.storeId || !newStore.email) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Invalid store data" });
+  // Get last storeId and increment it
+  let lastStoreId =
+    stores.length > 0 ? stores[stores.length - 1].storeId : "000000";
+  let newStoreId = (parseInt(lastStoreId, 10) + 1).toString().padStart(6, "0");
+
+  const newStore = {
+    storeId: newStoreId, // Incremental storeId
+    storename: req.body.storename,
+    email: req.body.email,
+    password: req.body.password,
+    contactnumber: req.body.contactnumber,
+    description: req.body.description,
+  };
+
+  // Check if email already exists
+  const emailExists = stores.some((store) => store.email === newStore.email);
+  if (emailExists) {
+    return res.status(400).json({
+      success: false,
+      message: "Email already exists!",
+    });
   }
 
-  const storeExists = stores.some(
-    (store) => store.storeId === newStore.storeId
+  // Check if store name already exists
+  const storeNameExists = stores.some(
+    (store) => store.storename === newStore.storename
   );
-
-  if (storeExists) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Store ID already exists!" });
+  if (storeNameExists) {
+    return res.status(400).json({
+      success: false,
+      message: "Store name already exists!",
+    });
   }
 
   stores.push(newStore);
@@ -219,7 +235,6 @@ app.post("/add-store", (req, res) => {
     data: newStore,
   });
 });
-
 // API to edit an existing store
 app.put("/edit-store/:storeId", (req, res) => {
   const storeId = parseInt(req.params.storeId);
