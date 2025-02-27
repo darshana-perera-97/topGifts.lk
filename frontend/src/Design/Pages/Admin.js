@@ -11,8 +11,10 @@ export default function Admin() {
         <DataCardView />
         {/* <AddProducts /> */}
         <Products />
-        <button className="btn ">
-          <Link to="/addProduct">Add a new Product</Link>
+        <button className="btn custom-btn2">
+          <Link to="/addProduct" className="custom-btn2">
+            Add a new Product
+          </Link>
         </button>
       </div>
     </div>
