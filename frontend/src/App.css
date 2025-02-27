@@ -27,3 +27,17 @@
   color: #fff !important;
   background: #402970;
 }
+
+.custom-btn2 {
+  background-color: #4caf50; /* Custom green color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 12px 20px; /* Adjust padding */
+  font-size: 16px; /* Increase font size */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.custom-btn2:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

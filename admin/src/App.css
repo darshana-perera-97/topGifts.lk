@@ -1,38 +1,199 @@
-.App {
+/* Background styling */
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+/* Login card */
+.login-card {
+  width: 350px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Input fields */
+.form-control {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Login button */
+.login-btn {
+  padding: 12px;
+  font-size: 18px;
+  transition: 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-btn:hover {
+  background: #5a7beb;
+}
+
+/* Background styling */
+.store-container {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 20px;
+}
+
+/* Store Card */
+.store-card {
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Table styling */
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Edit button */
+.edit-btn {
+  transition: 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #5a7beb;
+}
+
+/* Modal shadow */
+.modal-content {
+  border-radius: 8px;
+}
+
+/* Update button */
+.update-btn {
+  background-color: #28a745;
+  transition: 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #218838;
+}
+
+.custom-btn {
+  display: inline-block;
+  background-color: #007bff; /* Primary blue color */
   color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.custom-btn:hover {
+  background-color: #0056b3; /* Darker blue */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.custom-btn a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+/* Form container */
+.custom-form {
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+  background: #f8f9fa; /* Light gray background */
+}
+
+/* Input styles */
+.input-style {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-style:focus {
+  border-color: #5a7beb; /* Highlight on focus */
+  box-shadow: 0 0 8px rgba(90, 123, 235, 0.3);
+}
+
+/* Button styles */
+.custom-btn {
+  background: #5a7beb;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+  background: #3f5ec7;
+  transform: scale(1.05);
+}
+
+/* Background styling */
+.store-container {
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 20px;
+}
+
+/* Store Card */
+.store-card {
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Input styling */
+.input-style {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-style:focus {
+  border-color: #5a7beb;
+  box-shadow: 0 0 8px rgba(90, 123, 235, 0.3);
+}
+
+/* Submit button styling */
+.update-btn {
+  background-color: #28a745;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #218838;
 }

@@ -248,7 +248,7 @@ const AddProducts = () => {
           </div>
         )}
 
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-primary w-100 custom-btn">
           Add Product
         </button>
       </form>
